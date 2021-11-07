@@ -1,2 +1,4 @@
 # openrave-ros
-Docker image with OpenRAVE and ROS installed for different Ubuntu distros.
+Docker image with appropriate OpenRAVE and ROS installed for different Ubuntu distros:
+- Xenial
+- Melodic
