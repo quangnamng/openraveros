@@ -39,8 +39,8 @@ openrave data/lab1.env.xml
 ## OpenCV & PCL
 ```
 sudo apt-get update
-sudo apt-get install libopencv-dev python-opencv
-sudo apt install libpcl-dev pcl-tools
+sudo apt-get install libopencv-dev python-opencv -y
+sudo apt install libpcl-dev pcl-tools -y
 ```
 
 ## Gazebo
@@ -69,11 +69,11 @@ source ~/.bashrc
 ```
 Dependencies for ROS packages
 ```
-sudo apt install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential
+sudo apt install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential -y
 ```
 Initialize rosdep
 ```
-sudo apt install python-rosdep
+sudo apt install python-rosdep -y
 sudo rosdep init
 rosdep update
 ```
