@@ -3,7 +3,7 @@
 ```
 # Python
 sudo apt-get update
-sudo apt-get install ipython python-dev python-numpy python-pip python-scipy
+sudo apt-get install ipython python-dev python-numpy python-pip python-scipy -y
 # check versions
 python -c "import IPython; print('IPython v{}'.format(IPython.__version__))"
 python -c "import numpy; print('numpy v{}'.format(numpy.__version__))"
