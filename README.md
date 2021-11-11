@@ -49,7 +49,7 @@ rosdep update
 ```
 The gazebo_ros_pkgs packages:
 ```
-sudo apt-get install ros-kinetic-gazebo-ros-pkgs ros-kinetic-gazebo-ros-control
+sudo apt-get install ros-kinetic-gazebo-ros-pkgs ros-kinetic-gazebo-ros-control -y
 ```
 
 ## OpenRAVE
