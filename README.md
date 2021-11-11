@@ -15,7 +15,7 @@ git config --global user.name "your-github-username"
 git config --global user.email "your-email@address.com"
 
 # other tools
-sudo apt install curl nano gedit ssh -y
+sudo apt install curl nano gedit ssh vim -y
 ```
 
 ## ROS
@@ -39,7 +39,7 @@ source ~/.bashrc
 ```
 Dependencies for ROS packages
 ```
-sudo apt install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential -y
+sudo apt install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential python-catkin-tools -y
 ```
 Initialize rosdep
 ```
