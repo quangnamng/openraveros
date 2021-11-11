@@ -68,11 +68,11 @@ cd ~/catkin_ws
 catkin_make install
 ```
 
-Some dependencies that need to be manually installed
+Some dependencies need to be installed manually
 ```
 sudo apt-get install blender openscad python-rtree -
 pip install --upgrade pip
-pip install control trimesh --user
+pip install control trimesh --user # skip this if pip has errors in Ubuntu 16.04
 ```
 
 
