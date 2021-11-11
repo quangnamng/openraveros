@@ -59,6 +59,22 @@ sudo rosdep init
 rosdep update
 ```
 
+Setup catkin workspace
+```
+mkdir -p ~/catkin_ws/src
+cd ~/catkin_ws/src
+catkin_init_workspace
+cd ~/catkin_ws
+catkin_make install
+```
+
+Some dependencies that need to be manually installed
+```
+sudo apt-get install blender openscad python-rtree -
+pip install --upgrade pip
+pip install control trimesh --user
+```
+
 
 ## OpenRAVE
 Clone the repository:
@@ -84,22 +100,6 @@ openrave data/lab1.env.xml
 sudo apt-get update
 sudo apt-get install libopencv-dev python-opencv -y
 sudo apt install libpcl-dev pcl-tools -y
-```
-
-## Setup workspcae
-Setup catkin workspace
-```
-mkdir -p ~/catkin_ws/src
-cd ~/catkin_ws/src
-catkin_init_workspace
-cd ~/catkin_ws
-catkin_make install
-```
-
-Some dependencies that need to be manually installed
-```
-sudo apt-get install blender openscad python-rtree -
-pip install control trimesh --user
 ```
 
 
