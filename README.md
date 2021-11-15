@@ -15,7 +15,7 @@ git config --global user.name "your-github-username"
 git config --global user.email "your-email@address.com"
 
 # other tools
-sudo apt install curl nano gedit ssh vim -y
+sudo apt install curl nano gedit ssh vim mayavi2 -y
 ```
 
 
