@@ -81,6 +81,7 @@ catkin_make install
 ## OpenRAVE
 Some dependencies need to be installed manually
 ```
+sudo add-apt-repository ppa:openscad/releases
 sudo apt-get install blender openscad python-rtree -
 pip install --upgrade pip # skip this if pip has errors in Ubuntu 16.04
 pip install trimesh       # needed for working with OpenRAVE objects
