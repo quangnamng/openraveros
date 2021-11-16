@@ -1,4 +1,6 @@
 # Installation of OpenRAVE and ROS
+This is the instruction for Ubuntu 16.04 Xenial Xerus. For Ubuntu 18.04 Bionic Beaver, replace 'kinetic' by 'melodic' unless otherwise stated.
+
 ## Basic tools
 ```
 # Python
@@ -17,7 +19,14 @@ git config --global user.email "your-email@address.com"
 # other tools
 sudo apt install curl nano gedit ssh vim mayavi2 -y
 ```
+In Ubuntu 18.04 or later, it is safer to set the default Python version to Python 2 using the following commands:
+```
+sudo update-alternatives --config python # check whether is was set up before
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2 # this may be 'python3.8' in some cases, check by 'python3 --version'
+sudo update-alternatives --config python # now we may see 2 options, choose python2.7 by typing number '1' 
 
+```
 
 ## ROS
 Setup sources.list
