@@ -68,6 +68,8 @@ cd ~/catkin_ws
 catkin_make install
 ```
 
+
+## OpenRAVE
 Some dependencies need to be installed manually
 ```
 sudo apt-get install blender openscad python-rtree -
@@ -77,8 +79,6 @@ pip install trimesh       # needed for working with OpenRAVE objects
 pip install control trimesh --user 
 ```
 
-
-## OpenRAVE
 Clone the repository:
 ```
 git clone https://github.com/crigroup/openrave-installation.git
