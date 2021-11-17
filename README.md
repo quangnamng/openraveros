@@ -18,14 +18,27 @@ git config --global user.email "your-email@address.com"
 
 # other tools
 sudo apt install curl nano gedit ssh vim mayavi2 -y
+pip install --upgrade pip # skip this if pip causes errors in Ubuntu 16.04
 ```
+
 In Ubuntu 18.04 or later, it is safer to set the default Python version to Python 2 using the following commands:
 ```
 sudo update-alternatives --config python # check whether is was set up before
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2 # this may be 'python3.8' in some cases, check by 'python3 --version'
 sudo update-alternatives --config python # now we may see 2 options, choose python2.7 by typing number '1' 
+```
 
+If using WSL, install some useful applications
+```
+sudo apt install nautilus gedit -y
+```
+
+VS Code for WSL: 
+- In Windows, download VS Code and install some extensions: Remote-WSL, Python, C++, Docker
+- In WSL distro, to open the current work directory in VS Code, just run:
+```
+code .
 ```
 
 ## ROS
@@ -83,7 +96,6 @@ Some dependencies need to be installed manually
 ```
 sudo add-apt-repository ppa:openscad/releases
 sudo apt-get install blender openscad python-rtree -
-pip install --upgrade pip # skip this if pip has errors in Ubuntu 16.04
 pip install trimesh       # needed for working with OpenRAVE objects
 # if fail, try this:
 pip install control trimesh --user 
@@ -97,9 +109,9 @@ Go to the directory just downloaded and run the scripts:
 ```
 cd openrave-installation
 ./install-dependencies.sh
-./install-osg.sh -j6
-./install-fcl.sh -j6
-./install-openrave.sh -j6
+./install-osg.sh -j4
+./install-fcl.sh -j4
+./install-openrave.sh -j4
 cd && rm -rf openrave-installation
 ```
 Test the installation with a built-in environment:
