@@ -29,12 +29,7 @@ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2 #
 sudo update-alternatives --config python # now we may see 2 options, choose python2.7 by typing number '1' 
 ```
 
-If using WSL, install some useful applications
-```
-sudo apt install nautilus gedit -y
-```
-
-VS Code for WSL: 
+If using WSL, install VS Code: 
 - In Windows, download VS Code and install some extensions: Remote-WSL, Python, C++, Docker
 - In WSL distro, to open the current work directory in VS Code, just run:
 ```
