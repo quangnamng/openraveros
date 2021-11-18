@@ -88,9 +88,14 @@ Some dependencies need to be installed manually
 ```
 sudo add-apt-repository ppa:openscad/releases
 sudo apt-get install blender openscad python-rtree -
-pip install trimesh       # needed for working with OpenRAVE objects
-# if fail, try this:
-pip install control trimesh --user 
+```
+
+
+## OpenCV & PCL
+```
+sudo apt-get update
+sudo apt-get install libopencv-dev python-opencv -y
+sudo apt install libpcl-dev pcl-tools -y
 ```
 
 
@@ -113,11 +118,14 @@ Test the installation with a built-in environment:
 openrave data/lab1.env.xml
 ```
 
-## OpenCV & PCL
+Install trimesh (needed for working with OpenRAVE objects)
 ```
-sudo apt-get update
-sudo apt-get install libopencv-dev python-opencv -y
-sudo apt install libpcl-dev pcl-tools -y
+pip install future # dependency of trimesh
+pip install trimesh # needed for working with OpenRAVE objects
+# if fail, try this:
+pip install control trimesh --user 
 ```
+
+
 
 
