@@ -19,15 +19,15 @@ git config --global user.email "your-email@address.com"
 # other tools
 sudo apt install curl nano gedit ssh vim mayavi2 -y
 pip install --upgrade pip # skip this if pip causes errors in Ubuntu 16.04
-pip install future # missing compatibility layer between Python 2 and Python 3
+pip install future        # missing compatibility layer between Python 2 and Python 3
 ```
 
 In Ubuntu 18.04 or later, it is safer to set the default Python version to Python 2 using the following commands:
 ```
-sudo update-alternatives --config python # check whether is was set up before
+sudo update-alternatives --config python                                       # check whether is was set up before
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2 # this may be 'python3.8' in some cases, check by 'python3 --version'
-sudo update-alternatives --config python # now we may see 2 options, choose python2.7 by typing number '1' 
+sudo update-alternatives --config python                                       # now we may see 2 options, choose python2.7 by typing number '1' 
 ```
 
 If using WSL, install VS Code: 
@@ -108,8 +108,8 @@ git clone https://github.com/crigroup/openrave-installation.git
 Go to the directory just downloaded and run the scripts:
 ```
 cd openrave-installation
-./install-dependencies.sh
-./install-osg.sh -j4
+./install-dependencies.sh # it may take a while at the end of the process, do not interrupt
+./install-osg.sh -j4      # -j4 uses 4 CPU cores to compute, do not increase this number above 50% of laptop's cores
 ./install-fcl.sh -j4
 ./install-openrave.sh -j4
 cd && rm -rf openrave-installation
