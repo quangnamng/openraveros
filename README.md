@@ -83,6 +83,7 @@ mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/
 catkin init
 catkin config --install
+catkin config --extend /opt/ros/kinetic
 ```
 
 Some dependencies need to be installed manually
