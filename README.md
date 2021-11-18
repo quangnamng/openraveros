@@ -123,5 +123,5 @@ Install trimesh (needed for working with OpenRAVE objects)
 ```
 pip install trimesh # needed for working with OpenRAVE objects
 # if fail, try this:
-pip install control trimesh --user 
+pip install --no-deps trimesh
 ```
