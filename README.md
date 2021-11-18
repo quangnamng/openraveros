@@ -109,8 +109,8 @@ Go to the directory just downloaded and run the scripts:
 ```
 cd openrave-installation
 ./install-dependencies.sh # it may take a while at the end of the process, do not interrupt
-./install-osg.sh -j4      # -j4 uses 4 CPU cores to compute, do not increase this number above 50% of laptop's cores
-./install-fcl.sh -j4
+./install-osg.sh -j4      # this may require user's password before building
+./install-fcl.sh -j4      # -j4 uses 4 CPU cores to compute, do not increase this number above 50% of laptop's cores
 ./install-openrave.sh -j4
 cd && rm -rf openrave-installation
 ```
