@@ -76,17 +76,14 @@ sudo rosdep init
 rosdep update
 ```
 
-Setup catkin workspace
+Initialize catkin workspace
 ```
 mkdir -p ~/catkin_ws/src
-cd ~/catkin_ws/src
-catkin_init_workspace
-cd ~/catkin_ws
-catkin_make install
+cd ~/catkin_ws/
+catkin init
+catkin config --install
 ```
 
-
-## OpenRAVE
 Some dependencies need to be installed manually
 ```
 sudo add-apt-repository ppa:openscad/releases
@@ -96,6 +93,8 @@ pip install trimesh       # needed for working with OpenRAVE objects
 pip install control trimesh --user 
 ```
 
+
+## OpenRAVE
 Clone the repository:
 ```
 git clone https://github.com/crigroup/openrave-installation.git
