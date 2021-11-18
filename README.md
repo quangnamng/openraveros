@@ -121,7 +121,7 @@ openrave data/lab1.env.xml
 
 Install trimesh (needed for working with OpenRAVE objects)
 ```
-pip install trimesh # needed for working with OpenRAVE objects
+pip install control trimesh # needed for working with OpenRAVE objects
 # if fail, try this:
-pip install --no-deps trimesh
+pip install --no-deps control trimesh
 ```
