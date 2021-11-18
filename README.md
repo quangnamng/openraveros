@@ -19,6 +19,7 @@ git config --global user.email "your-email@address.com"
 # other tools
 sudo apt install curl nano gedit ssh vim mayavi2 -y
 pip install --upgrade pip # skip this if pip causes errors in Ubuntu 16.04
+pip install future # missing compatibility layer between Python 2 and Python 3
 ```
 
 In Ubuntu 18.04 or later, it is safer to set the default Python version to Python 2 using the following commands:
@@ -120,12 +121,7 @@ openrave data/lab1.env.xml
 
 Install trimesh (needed for working with OpenRAVE objects)
 ```
-pip install future # dependency of trimesh
 pip install trimesh # needed for working with OpenRAVE objects
 # if fail, try this:
 pip install control trimesh --user 
 ```
-
-
-
-
