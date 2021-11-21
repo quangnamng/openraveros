@@ -1,4 +1,4 @@
-# Installation of OpenRAVE and ROS
+# Installation of ROS and OpenRAVE
 This is the instruction for Ubuntu 16.04 Xenial Xerus. For Ubuntu 18.04 Bionic Beaver, replace 'kinetic' by 'melodic' unless otherwise stated.
 
 ## Basic tools
