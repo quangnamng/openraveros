@@ -26,8 +26,8 @@ In Ubuntu 18.04 or later, it is safer to set the default Python version to Pytho
 ```
 sudo update-alternatives --config python                                       # check whether is was set up before
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
-sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2 # this may be 'python3.8' in some cases, check by 'python3 --version'
-sudo update-alternatives --config python                                       # now we may see 2 options, choose python2.7 by typing number '1' 
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2 # this may be 'python3.5', check by 'python3 --version'
+sudo update-alternatives --config python                                       # type `1` to choose python2.7 
 ```
 
 If using WSL, install VS Code: 
