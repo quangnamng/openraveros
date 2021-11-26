@@ -93,20 +93,22 @@ sudo apt-get install blender openscad python-rtree -
 ## OpenRAVE
 Clone the repository:
 ```
-git clone https://github.com/crigroup/openrave-installation.git
+cd && git clone https://github.com/crigroup/openrave-installation.git
 ```
 Go to the directory just downloaded and run the scripts:
 ```
 cd openrave-installation
+# the tag `-j4` allows using 4 CPU cores to compile, lower this number if c++ compiler fails
 ./install-dependencies.sh -j4 # it may take a while at the end of the process, do not interrupt
 ./install-osg.sh -j4          # this may require user's password before building
-./install-fcl.sh -j4          # -j4 uses 4 CPU cores to compute, do not increase this number above 50% of laptop's cores
+./install-fcl.sh -j4
 ./install-openrave.sh -j4
-cd && rm -rf openrave-installation
+cd && sudo rm -rf openrave-installation
 ```
-Test the installation with a built-in environment:
+Test the installation with the built-in environment and/or some [examples](http://openrave.org/docs/latest_stable/examples/):
 ```
 openrave data/lab1.env.xml
+openrave.py --example hanoi
 ```
 
 Install trimesh (needed for working with OpenRAVE objects)
