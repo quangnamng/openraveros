@@ -90,14 +90,6 @@ sudo apt-get install blender openscad python-rtree -
 ```
 
 
-## OpenCV & PCL
-```
-sudo apt-get update
-sudo apt-get install libopencv-dev python-opencv -y
-sudo apt install libpcl-dev pcl-tools -y
-```
-
-
 ## OpenRAVE
 Clone the repository:
 ```
@@ -122,4 +114,12 @@ Install trimesh (needed for working with OpenRAVE objects)
 pip install control trimesh # needed for working with OpenRAVE objects
 # if fail, try this:
 pip install --no-deps control trimesh
+```
+
+
+## (Optional) OpenCV & PCL
+```
+sudo apt-get update
+sudo apt-get install libopencv-dev python-opencv -y
+sudo apt install libpcl-dev pcl-tools -y
 ```
