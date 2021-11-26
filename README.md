@@ -113,8 +113,8 @@ openrave.py --example hanoi
 
 Install trimesh (needed for working with OpenRAVE objects)
 ```
-pip install control trimesh # needed for working with OpenRAVE objects
-# if fail, try this:
+pip install control trimesh
+# if the above fails, try this:
 pip install --no-deps control trimesh
 ```
 
