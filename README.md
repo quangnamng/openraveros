@@ -77,11 +77,6 @@ sudo rosdep init
 rosdep update
 ```
 
-Initialize catkin workspace
-```
-mkdir -p ~/catkin_ws/src
-cd ~/catkin_ws/
-```
 
 Some dependencies need to be installed manually
 ```
