@@ -114,3 +114,7 @@ sudo apt-get update
 sudo apt-get install libopencv-dev python-opencv -y
 sudo apt install libpcl-dev pcl-tools -y
 ```
+
+
+# Maintainer
+* [Quang-Nam Nguyen](mailto:quangnam.nguyen@ntu.edu.sg)
