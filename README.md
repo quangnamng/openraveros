@@ -1,6 +1,6 @@
 # Installation of ROS and OpenRAVE
 This is the instruction for Ubuntu 16.04 Xenial Xerus. 
-For Ubuntu 18.04 Bionic Beaver, replace 'kinetic' by 'melodic' and 'xenial' by 'bionic'.
+For Ubuntu 18.04 Bionic Beaver, replace `kinetic` by `melodic` and `xenial` by `bionic`.
 
 ## Basic tools
 ```
@@ -33,7 +33,7 @@ sudo update-alternatives --config python                                       #
 
 
 ## ROS
-Setup sources.list
+Setup `sources.list`
 ```
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 ```
@@ -60,12 +60,12 @@ Dependencies for ROS packages
 sudo apt install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential python-catkin-tools -y
 ```
 
-The gazebo_ros_pkgs packages:
+The `gazebo_ros_pkgs` packages
 ```
 sudo apt-get install ros-kinetic-gazebo-ros-pkgs ros-kinetic-gazebo-ros-control -y
 ```
 
-Initialize rosdep
+Initialize `rosdep`
 ```
 sudo apt install python-rosdep -y
 sudo rosdep init
@@ -103,7 +103,7 @@ openrave.py --example hanoi
 Install trimesh (needed for working with OpenRAVE objects)
 ```
 pip install control trimesh
-# if the above fails, try this:
+# if the above fails, try:
 pip install --no-deps control trimesh
 ```
 
