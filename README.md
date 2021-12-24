@@ -1,5 +1,6 @@
 # Installation of ROS and OpenRAVE
-This is the instruction for Ubuntu 16.04 Xenial Xerus. For Ubuntu 18.04 Bionic Beaver, replace 'kinetic' by 'melodic' unless otherwise stated.
+This is the instruction for Ubuntu 16.04 Xenial Xerus. 
+For Ubuntu 18.04 Bionic Beaver, replace 'kinetic' by 'melodic' and 'xenial' by 'bionic'.
 
 ## Basic tools
 ```
@@ -22,7 +23,7 @@ pip install --upgrade pip # skip this if pip causes errors in Ubuntu 16.04
 pip install future        # missing compatibility layer between Python 2 and Python 3
 ```
 
-In Ubuntu 18.04 or later, it is safer to set the default Python version to Python 2 using the following commands:
+In Ubuntu 18.04, it is safer to set the default Python version to Python 2 using the following commands:
 ```
 sudo update-alternatives --config python                                       # check whether is was set up before
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
@@ -30,12 +31,6 @@ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2 #
 sudo update-alternatives --config python                                       # type `1` to choose python2.7 
 ```
 
-If using WSL, install VS Code: 
-- In Windows, download VS Code and install some extensions: Remote-WSL, Python, C++, Docker
-- In WSL distro, to open the current work directory in VS Code, just run:
-```
-code .
-```
 
 ## ROS
 Setup sources.list
@@ -76,7 +71,6 @@ sudo apt install python-rosdep -y
 sudo rosdep init
 rosdep update
 ```
-
 
 Some dependencies need to be installed manually
 ```
