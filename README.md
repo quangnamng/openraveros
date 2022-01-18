@@ -13,7 +13,7 @@ python -c "import numpy; print('numpy v{}'.format(numpy.__version__))"
 python -c "import scipy; print('scipy v{}'.format(scipy.__version__))"
 
 # git
-sudo apt-get install git
+sudo apt-get install git -y
 git config --global user.name "your-github-username"
 git config --global user.email "your-email@address.com"
 
@@ -75,7 +75,7 @@ rosdep update
 Some dependencies need to be installed manually
 ```
 sudo add-apt-repository ppa:openscad/releases
-sudo apt-get install blender openscad python-rtree -
+sudo apt-get install blender openscad python-rtree -y
 ```
 
 
