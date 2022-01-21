@@ -86,7 +86,7 @@ cd && git clone https://github.com/crigroup/openrave-installation.git
 ```
 Go to the directory just downloaded and run the scripts:
 ```
-cd openrave-installation
+cd openrave-installation && git checkout b2766bd789e2432c4485dff189e75cf328f243ec
 # the tag `-j4` allows using 4 CPU cores to compile, lower this number if c++ compiler fails
 ./install-dependencies.sh -j4 # it may take a while at the end of the process, do not interrupt
 ./install-osg.sh -j4          # this may require user's password before building
