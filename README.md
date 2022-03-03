@@ -65,6 +65,11 @@ The `gazebo_ros_pkgs` packages
 sudo apt-get install ros-kinetic-gazebo-ros-pkgs ros-kinetic-gazebo-ros-control -y
 ```
 
+Install ros_control:
+```
+sudo apt-get install ros-kinetic-ros-control ros-kinetic-ros-controllers
+```
+
 Initialize `rosdep`
 ```
 sudo apt install python-rosdep -y
