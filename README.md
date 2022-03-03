@@ -60,12 +60,12 @@ Dependencies for ROS packages
 sudo apt install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential python-catkin-tools -y
 ```
 
-The `gazebo_ros_pkgs` packages
+Install `gazebo_ros_pkgs`
 ```
 sudo apt-get install ros-kinetic-gazebo-ros-pkgs ros-kinetic-gazebo-ros-control -y
 ```
 
-Install ros_control:
+Install `ros_control`
 ```
 sudo apt-get install ros-kinetic-ros-control ros-kinetic-ros-controllers
 ```
