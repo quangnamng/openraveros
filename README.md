@@ -1,6 +1,8 @@
-# Installation of ROS and OpenRAVE
-This is the instruction for Ubuntu 16.04 Xenial Xerus. 
-For Ubuntu 18.04 Bionic Beaver, replace `kinetic` by `melodic` and `xenial` by `bionic`.
+# Installation of ROS and OpenRAVE for Robotics
+Below is the instruction for Ubuntu 16.04 Xenial Xerus. 
+For Ubuntu 18.04 Bionic Beaver, replace `kinetic` by `melodic` when necessary unless otherwise stated. 
+This instruction may not work for Ubuntu 20.04 and above.
+
 
 ## Basic tools
 ```
@@ -18,17 +20,20 @@ git config --global user.name "your-github-username"
 git config --global user.email "your-email@address.com"
 
 # other tools
-sudo apt install curl nano gedit ssh vim mayavi2 -y
+sudo apt install curl nano gedit ssh vim -y
 pip install --upgrade pip # skip this if pip causes errors in Ubuntu 16.04
 pip install future        # missing compatibility layer between Python 2 and Python 3
 ```
 
 In Ubuntu 18.04, it is safer to set the default Python version to Python 2 using the following commands:
 ```
-sudo update-alternatives --config python                                       # check whether is was set up before
+# checking
+python --version
+python3 --version
+# in the next commands, replace 'python2.7' and 'python3.5' by the versions you get from above
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
-sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 2 # this may be 'python3.5', check by 'python3 --version'
-sudo update-alternatives --config python                                       # type `1` to choose python2.7 
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.5 2 
+sudo update-alternatives --config python   # type `1` to choose python2.7 
 ```
 
 
@@ -72,7 +77,6 @@ sudo apt-get install ros-kinetic-ros-control ros-kinetic-ros-controllers
 
 Initialize `rosdep`
 ```
-sudo apt install python-rosdep -y
 sudo rosdep init
 rosdep update
 ```
@@ -85,21 +89,25 @@ sudo apt-get install blender openscad python-rtree -y
 
 
 ## OpenRAVE
-Clone the repository:
+Clone the repository
 ```
 cd && git clone https://github.com/crigroup/openrave-installation.git
+cd openrave-installation
 ```
-Go to the directory just downloaded and run the scripts:
+Go to the directory just downloaded and run the scripts
 ```
-cd openrave-installation && git checkout b2766bd789e2432c4485dff189e75cf328f243ec
-# the tag `-j4` allows using 4 CPU cores to compile, lower this number if c++ compiler fails
-./install-dependencies.sh -j4 # it may take a while at the end of the process, do not interrupt
-./install-osg.sh -j4          # this may require user's password before building
+# In Ubuntu 18.04, use the next line to check out an old commit that installs OpenRAVE 0.9.0
+# Because latest commit will install OpenRAVE 0.9.0 for Ubuntu 16.04 but 0.53.1 for Ubuntu 18.04
+git checkout b2766bd789e2432c4485dff189e75cf328f243ec
+
+# install using scripts
+./install-dependencies.sh -j4
+./install-osg.sh -j4
 ./install-fcl.sh -j4
 ./install-openrave.sh -j4
 cd && sudo rm -rf openrave-installation
 ```
-Test the installation with the built-in environment and/or some [examples](http://openrave.org/docs/latest_stable/examples/):
+Test the installation with the built-in environment and/or some [examples](http://openrave.org/docs/latest_stable/examples/)
 ```
 openrave data/lab1.env.xml
 openrave.py --example hanoi
@@ -122,4 +130,4 @@ sudo apt install libpcl-dev pcl-tools -y
 
 
 # Maintainer
-* [Quang-Nam Nguyen](mailto:quangnam.nguyen@ntu.edu.sg)
+* [Quang Nam Nguyen](mailto:quangnam.nguyen@ntu.edu.sg)
