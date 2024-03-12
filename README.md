@@ -129,5 +129,59 @@ sudo apt install libpcl-dev pcl-tools -y
 ```
 
 
-# Maintainer
-* [Quang Nam Nguyen](mailto:quangnam.nguyen@ntu.edu.sg)
+
+## osr_course_pkgs
+We build `catkin_ws` using `catkin_tools`: 
+* Install `catkin_tools` by following the instruction [here](https://catkin-tools.readthedocs.io/en/latest/installing.html)
+* Make a directory:
+```
+cd && mkdir -p ~/catkin_ws/src
+```
+
+The course page is [here](https://osrobotics.org/osr/)
+* Clone the repository [osr_course_pkgs](https://github.com/crigroup/osr_course_pkgs.git):
+```
+cd ~/catkin_ws/src
+git clone https://github.com/crigroup/osr_course_pkgs.git
+```
+* Initialize catkin workspace:
+```
+cd ~/catkin_ws
+catkin init
+```
+* Prepare to build this package:
+```
+cd ~/catkin_ws/src
+wstool init .
+wstool merge osr_course_pkgs/dependencies.rosinstall
+wstool update
+sudo apt update
+rosdep update --include-eol-distros
+sudo rosdep install --rosdistro $ROSDISTRO --ignore-src --from-paths . -y
+```
+* Build all packages inside `catkin_ws`:
+```
+cd ~/catkin_ws
+catkin config --install
+catkin build
+```
+* First time building `catkin_ws`? do this:
+```
+echo "source /home/`id -un`/$CATKINWS/devel/setup.bash" >> ~/.bashrc && \
+source ~/.bashrc
+```
+Later, after building any new packages, just `source ~/.bashrc`
+
+Check the built package: run the cubes task by the following commands in 3 different terminals in order
+* On terminal 1:
+```
+roslaunch osr_gazebo cubes_task.launch
+```
+* On terminal 2:
+```
+roslaunch osr_control controllers.launch
+```
+* On terminal 3:
+```
+rosrun osr_examples gazebo_pick_and_place.py
+```
