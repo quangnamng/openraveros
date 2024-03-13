@@ -177,7 +177,7 @@ catkin build
 ```
 echo "source /home/`id -un`/catkin_ws/devel/setup.bash" >> ~/.bashrc && \
 ```
-Lastly, after building new packages, run `source ~/.bashrc` to source the setup.
+* Lastly, after building new packages, run `source ~/.bashrc` to source the setup.
 
 Check the built packages: 
 * Run an example in gazebo:
@@ -190,6 +190,7 @@ it is because gazebo models are not downloaded automatically, clone them to your
 ```
 cd .gazebo
 git clone https://github.com/osrf/gazebo_models.git
+mv gazebo_models/ models
 ```
 
 Example: run the cubes task by the following commands in 3 different terminals in the following order:
