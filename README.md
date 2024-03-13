@@ -175,7 +175,7 @@ catkin build
 ```
 * First time building `catkin_ws`? do this:
 ```
-echo "source /home/`id -un`/catkin_ws/devel/setup.bash" >> ~/.bashrc && \
+echo "source /home/`id -un`/catkin_ws/devel/setup.bash" >> ~/.bashrc
 ```
 * Lastly, after building new packages, run `source ~/.bashrc` to source the setup.
 
