@@ -1,8 +1,11 @@
 # Installation of ROS and OpenRAVE for Robotics
-Below is the instruction for Ubuntu 16.04 Xenial Xerus. 
-For Ubuntu 18.04 Bionic Beaver, replace `kinetic` by `melodic` when necessary unless otherwise stated. 
-This instruction may not work for Ubuntu 20.04 and above.
+This is based on the Open-source Robotics course which is available [here](https://osrobotics.org/osr/).
 
+IMPORTANCE:
+* Below is the instruction for Ubuntu 16.04 Xenial Xerus. 
+* For Ubuntu 18.04 Bionic Beaver, replace `kinetic` by `melodic` when necessary unless otherwise stated. 
+* This instruction may not work for Ubuntu 20.04 and above.
+* Please read the comments at every step.
 
 ## Basic tools
 ```
@@ -30,6 +33,7 @@ In Ubuntu 18.04, it is safer to set the default Python version to Python 2 using
 # checking
 python --version
 python3 --version
+
 # in the next commands, replace 'python2.7' and 'python3.5' by the versions you get from above
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.5 2 
@@ -94,17 +98,19 @@ Clone the repository
 cd && git clone https://github.com/crigroup/openrave-installation.git
 cd openrave-installation
 ```
-Go to the directory just downloaded and run the scripts
+!!! Run this line for Ubuntu 18 (ROS Melodic) only:
 ```
 # In Ubuntu 18.04, use the next line to check out an old commit that installs OpenRAVE 0.9.0
 # Because latest commit will install OpenRAVE 0.9.0 for Ubuntu 16.04 but 0.53.1 for Ubuntu 18.04
 git checkout b2766bd789e2432c4485dff189e75cf328f243ec
-
+```
+Go to the directory just downloaded and run the scripts
+```
 # install using scripts
-./install-dependencies.sh -j4
-./install-osg.sh -j4
-./install-fcl.sh -j4
-./install-openrave.sh -j4
+./install-dependencies.sh
+./install-osg.sh
+./install-fcl.sh
+./install-openrave.sh
 cd && sudo rm -rf openrave-installation
 ```
 Test the installation with the built-in environment and/or some [examples](http://openrave.org/docs/latest_stable/examples/)
@@ -131,14 +137,14 @@ sudo apt install libpcl-dev pcl-tools -y
 
 
 ## osr_course_pkgs
+The course page is [here](https://osrobotics.org/osr/).
+
 We build `catkin_ws` using `catkin_tools`: 
-* Install `catkin_tools` by following the instruction [here](https://catkin-tools.readthedocs.io/en/latest/installing.html)
+* Install [catkin_tools](https://catkin-tools.readthedocs.io/en/latest/installing.html) by `sudo apt install python-catkin-tools`
 * Make a directory:
 ```
 cd && mkdir -p ~/catkin_ws/src
 ```
-
-The course page is [here](https://osrobotics.org/osr/)
 * Clone the repository [osr_course_pkgs](https://github.com/crigroup/osr_course_pkgs.git):
 ```
 cd ~/catkin_ws/src
@@ -148,6 +154,8 @@ git clone https://github.com/crigroup/osr_course_pkgs.git
 ```
 cd ~/catkin_ws
 catkin init
+catkin config --extend /opt/ros/$ROSDISTRO
+catkin config --merge-devel
 ```
 * Prepare to build this package:
 ```
@@ -167,12 +175,24 @@ catkin build
 ```
 * First time building `catkin_ws`? do this:
 ```
-echo "source /home/`id -un`/$CATKINWS/devel/setup.bash" >> ~/.bashrc && \
-source ~/.bashrc
+echo "source /home/`id -un`/catkin_ws/devel/setup.bash" >> ~/.bashrc && \
 ```
-Later, after building any new packages, just `source ~/.bashrc`
+Lastly, after building new packages, run `source ~/.bashrc` to source the setup.
 
-Check the built package: run the cubes task by the following commands in 3 different terminals in order
+Check the built packages: 
+* Run an example in gazebo:
+```
+roslaunch osr_gazebo cubes_task.launch
+```
+* Escape by `Ctrl+C`
+* Troubleshoot: if you do not see the table in front of the robot,
+it is because gazebo models are not downloaded automatically, clone them to your computer:
+```
+cd .gazebo
+git clone https://github.com/osrf/gazebo_models.git
+```
+
+Example: run the cubes task by the following commands in 3 different terminals in the following order:
 * On terminal 1:
 ```
 roslaunch osr_gazebo cubes_task.launch
@@ -185,3 +205,8 @@ roslaunch osr_control controllers.launch
 ```
 rosrun osr_examples gazebo_pick_and_place.py
 ```
+Notes:
+* The first time you run this it may take a few minutes to generate robot's kinematics data.
+* Escape OpenRAVE by typing `exit` into terminal 3, and escape others by `Ctrl+C`
+
+
