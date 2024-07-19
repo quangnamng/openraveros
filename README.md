@@ -1,15 +1,14 @@
 # Installation of ROS and OpenRAVE for Robotics
-This is based on the Open-source Robotics course which is available [here](https://osrobotics.org/osr/).
+This is based on the [Open-source Robotics](https://osrobotics.org/osr/) course by [CRI Group](https://personal.ntu.edu.sg/cuong/).
+* System requirements: Ubuntu 16.04 or Ubuntu 18.04 using Python 2 
+(instruction for Ubuntu 20.04 + Python 3 will be in a separate branch)
+* Please replace `kinetic` (Ubuntu 16.04) with `melodic` (Ubuntu 18.04) whenever necessary
+* Please read the comments carefully at every step
 
-IMPORTANCE:
-* Below is the instruction for Ubuntu 16.04 Xenial Xerus. 
-* For Ubuntu 18.04 Bionic Beaver, replace `kinetic` by `melodic` when necessary unless otherwise stated. 
-* This instruction may not work for Ubuntu 20.04 and above.
-* Please read the comments at every step.
 
 ## Basic tools
 ```
-# Python
+# Python 2
 sudo apt-get update
 sudo apt-get install ipython python-dev python-numpy python-pip python-scipy -y
 # check versions
@@ -28,20 +27,20 @@ pip install --upgrade pip # skip this if pip causes errors in Ubuntu 16.04
 pip install future        # missing compatibility layer between Python 2 and Python 3
 ```
 
-In Ubuntu 18.04, it is safer to set the default Python version to Python 2 using the following commands:
+In Ubuntu 18.04, it is safer to set the default Python version to Python 2:
 ```
 # checking
 python --version
 python3 --version
 
-# in the next commands, replace 'python2.7' and 'python3.5' by the versions you get from above
+# in the next commands, replace 'python2.7' and 'python3.5' by the versions you get previously
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.5 2 
 sudo update-alternatives --config python   # type `1` to choose python2.7 
 ```
 
 
-## ROS
+## Robot Operating System (ROS)
 Setup `sources.list`
 ```
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
@@ -52,15 +51,15 @@ Setup keys
 curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
 ```
 
-Install ROS
+Install ROS: (for Ubuntu 18.04, replace `kinetic` with `melodic`)
 ```
 sudo apt-get update
-sudo apt-get install ros-kinetic-desktop-full -y
+sudo apt-get install ros--desktop-full -y
 ```
 
 Environment setup
 ```
-echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
+echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 ```
 
@@ -71,12 +70,12 @@ sudo apt install python-rosdep python-rosinstall python-rosinstall-generator pyt
 
 Install `gazebo_ros_pkgs`
 ```
-sudo apt-get install ros-kinetic-gazebo-ros-pkgs ros-kinetic-gazebo-ros-control -y
+sudo apt-get install ros-$ROS_DISTRO-gazebo-ros-pkgs ros-$ROS_DISTRO-gazebo-ros-control -y
 ```
 
 Install `ros_control`
 ```
-sudo apt-get install ros-kinetic-ros-control ros-kinetic-ros-controllers
+sudo apt-get install ros-$ROS_DISTRO-ros-control ros-$ROS_DISTRO-ros-controllers
 ```
 
 Initialize `rosdep`
@@ -85,7 +84,7 @@ sudo rosdep init
 rosdep update
 ```
 
-Some dependencies need to be installed manually
+Some dependencies need to be installed manually:
 ```
 sudo add-apt-repository ppa:openscad/releases
 sudo apt-get install blender openscad python-rtree -y
@@ -119,7 +118,7 @@ openrave data/lab1.env.xml
 openrave.py --example hanoi
 ```
 
-Install trimesh (needed for working with OpenRAVE objects)
+(Optional) Install trimesh (may be needed for working with OpenRAVE objects)
 ```
 pip install control trimesh
 # if the above fails, try:
@@ -135,13 +134,12 @@ sudo apt install libpcl-dev pcl-tools -y
 ```
 
 
-
 ## osr_course_pkgs
-The course page is [here](https://osrobotics.org/osr/).
+The Open-source Robotics course page is [here](https://osrobotics.org/osr/).
 
-We build `catkin_ws` using `catkin_tools`: 
-* Install [catkin_tools](https://catkin-tools.readthedocs.io/en/latest/installing.html) by `sudo apt install python-catkin-tools`
-* Make a directory:
+Below is how to build the ROS package [osr_course_pkgs](https://github.com/crigroup/osr_course_pkgs.git) 
+for that course in your own [catkin](https://wiki.ros.org/catkin/Tutorials) workspace:
+* Make a `catkin_ws` directory to store the packages:
 ```
 cd && mkdir -p ~/catkin_ws/src
 ```
@@ -150,34 +148,25 @@ cd && mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/src
 git clone https://github.com/crigroup/osr_course_pkgs.git
 ```
-* Initialize catkin workspace:
-```
-cd ~/catkin_ws
-catkin init
-catkin config --extend /opt/ros/$ROSDISTRO
-catkin config --merge-devel
-```
 * Prepare to build this package:
 ```
 cd ~/catkin_ws/src
 wstool init .
 wstool merge osr_course_pkgs/dependencies.rosinstall
 wstool update
-sudo apt update
-rosdep update --include-eol-distros
-sudo rosdep install --rosdistro $ROSDISTRO --ignore-src --from-paths . -y
+rosdep update
+rosdep install --from-paths . --ignore-src -y
 ```
 * Build all packages inside `catkin_ws`:
 ```
 cd ~/catkin_ws
-catkin config --install
-catkin build
+catkin_make --install
 ```
 * First time building `catkin_ws`? do this:
 ```
 echo "source /home/`id -un`/catkin_ws/devel/setup.bash" >> ~/.bashrc
 ```
-* Lastly, after building new packages, run `source ~/.bashrc` to source the setup.
+* Lastly, after building new packages, run `source ~/.bashrc` to source the setup file.
 
 Check the built packages: 
 * Run an example in gazebo:
@@ -185,8 +174,9 @@ Check the built packages:
 roslaunch osr_gazebo cubes_task.launch
 ```
 * Escape by `Ctrl+C`
-* Troubleshoot: if you do not see the table in front of the robot,
-it is because gazebo models are not downloaded automatically, clone them to your computer:
+* Troubleshoot: if you do not see the table in front of the robot, it is because
+gazebo models are not downloaded automatically, you may clone them to your computer:
+(the size is large, afterwards, you may want to keep only the models you need)
 ```
 cd .gazebo
 git clone https://github.com/osrf/gazebo_models.git
@@ -208,6 +198,6 @@ rosrun osr_examples gazebo_pick_and_place.py
 ```
 Notes:
 * The first time you run this it may take a few minutes to generate robot's kinematics data.
-* Escape OpenRAVE by typing `exit` into terminal 3, and escape others by `Ctrl+C`
+* Escape OpenRAVE by typing `exit` into the terminal then pressing Enter, while escape other programs by `Ctrl+C`.
 
 
