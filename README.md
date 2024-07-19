@@ -54,7 +54,7 @@ curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo ap
 Install ROS: (for Ubuntu 18.04, replace `kinetic` with `melodic`)
 ```
 sudo apt-get update
-sudo apt-get install ros--desktop-full -y
+sudo apt-get install ros-kinetic-desktop-full -y
 ```
 
 Environment setup
