@@ -1,8 +1,8 @@
 # Installation of ROS and OpenRAVE for Robotics
 This is based on the [Open-source Robotics](https://osrobotics.org/osr/) course by [CRI Group](https://personal.ntu.edu.sg/cuong/).
-* System requirements: Ubuntu 16.04 or Ubuntu 18.04 using Python 2 
+* System requirements: Ubuntu 18.04 or Ubuntu 16.04 using Python 2 
 (instruction for Ubuntu 20.04 + Python 3 will be in a separate branch)
-* Please replace `kinetic` (Ubuntu 16.04) with `melodic` (Ubuntu 18.04) whenever necessary
+* Please replace `melodic` (Ubuntu 18.04) with `kinetic` (Ubuntu 16.04) whenever necessary
 * Please read the comments carefully at every step
 
 
@@ -51,15 +51,15 @@ Setup keys
 curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
 ```
 
-Install ROS: (for Ubuntu 18.04, replace `kinetic` with `melodic`)
+Install ROS: (for Ubuntu 16.04, replace `melodic` with `kinetic`)
 ```
 sudo apt-get update
-sudo apt-get install ros-kinetic-desktop-full -y
+sudo apt-get install ros-melodic-desktop-full -y
 ```
 
 Environment setup
 ```
-echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.bashrc
+echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 ```
 
