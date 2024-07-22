@@ -134,7 +134,7 @@ sudo apt install libpcl-dev pcl-tools -y
 ```
 
 
-## osr_course_pkgs
+## osr_course_pkgs (Ubuntu 16.04 ONLY)
 The Open-source Robotics course page is [here](https://osrobotics.org/osr/).
 
 Below is how to build the ROS package [osr_course_pkgs](https://github.com/crigroup/osr_course_pkgs.git) 
